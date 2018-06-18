@@ -7,6 +7,8 @@
  * FILE: file.js
  */
 
+"use strict";
+
 let fs = require("fs");
 let glob = require("glob");
 let workingDirectory = "E:/Projects/zmgr-testing"; // "/var/www/noki.zorque.xyz/";
