@@ -66,8 +66,13 @@ app.get("/zmgr/images", (req, res) => {
 			res.send(err);
 		}
 		else {
-			images = file.formatImages(images);
-			res.locals.images = images;
+			// add a constant for perpage number in util/constants.js
+			let page = req.query.page || 1;
+			let perPage = 20;
+			let startRange = (req.query.page - 1) * perPage;
+			let endRange = startRange + perPage;
+
+			res.locals.images = images.slice(startRange, endRange);
 			res.locals.moment = require("moment");
 			res.render("images.pug");
 		}
@@ -81,8 +86,13 @@ app.get("/zmgr/files", (req, res) => {
 			res.send(err);
 		}
 		else {
-			files = file.formatImages(files);
-			res.locals.files = files;
+			// add a constant for perpage number in util/constants.js
+			let page = req.query.page || 1;
+			let perPage = 20;
+			let startRange = (req.query.page - 1) * perPage;
+			let endRange = startRange + perPage;
+
+			res.locals.files = files.slice(startRange, endRange);
 			res.locals.moment = require("moment");
 			res.render("files.pug");
 		}

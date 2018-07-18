@@ -13,13 +13,16 @@ html
 				p Manage #[a(target="_blank" href="https://noki.zorque.xyz") #[u noki.zorque.xyz]] web services
 			hr
 			div(class="row")
+				- let count = 0
 				div(class="col-lg-6")
 					h4 #[strong Images]
 					ul(class="noki-list")
 						for dat, ind in images
-							- let timeSince = moment(dat.uploaded).fromNow();
-							- let fullTime = moment(dat.uploaded).format("dddd, MMMM Do YYYY, h:mm:ss a");
-							li #[span(title=fullTime class="pull-right since-label") #{timeSince}] #[span #[a(target="_blank" href=dat.url) #{dat.url}]] #[img(src=dat.url style="max-width: 50%")]
+							if count <= 20
+								- let timeSince = moment(dat.uploaded).fromNow();
+								- let fullTime = moment(dat.uploaded).format("dddd, MMMM Do YYYY, h:mm:ss a");
+								li #[span(title=fullTime class="pull-right since-label") #{timeSince}] #[span #[a(target="_blank" href=dat.url) #{dat.url}]] #[img(src=dat.url style="max-width: 50%")]
+							- let count = count + 1
 			hr
 			div(class="footer text-center")
 				p © nokizorque 2018
