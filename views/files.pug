@@ -12,8 +12,14 @@ html
 				h1 zmgr
 				p Manage #[a(target="_blank" href="https://noki.zorque.xyz") #[u noki.zorque.xyz]] web services
 			hr
-			div(class="text-center")
-				p content soon
+			div(class="row")
+				div(class="col-lg-6")
+					h3 #[strong Files]
+					ul(class="noki-list")
+						for dat, ind in files
+							- let timeSince = moment(dat.uploaded).fromNow();
+							- let fullTime = moment(dat.uploaded).format("dddd, MMMM Do YYYY, h:mm:ss a");
+							li #[span(title=fullTime class="pull-right since-label") #{timeSince}] #[a(target="_blank" href=dat.url) #{dat.url}]
 			hr
 			div(class="footer text-center")
 				p © nokizorque 2018
