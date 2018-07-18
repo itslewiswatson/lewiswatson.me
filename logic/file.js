@@ -20,6 +20,18 @@ Array.prototype.sortBy = function(p) {
 };
 
 /*
+ * Caching
+ */
+let fileCache = {
+	updated: 0,
+	data: null
+};
+let imageCache = {
+	updated: 0,
+	data: null
+}
+
+/*
  * error err, object listing getImages(object params, function cb)
  * 
  * params -> {
@@ -28,12 +40,19 @@ Array.prototype.sortBy = function(p) {
  * }
  */
 module.exports.getImages = function(params, cb) {
-	glob(constants.workingDir + "/i/" + "*.{png,jpg,gif}", (err, files) => {
+	if ((+ new Date() - imageCache.updated) < 7200000) {
+		cb(null, imageCache.data);
+		return;
+	}
+	glob(constants.workingDir + "/i/" + "*.{png,jpg,gif}", (err, images) => {
 		if (err) {
 			cb(err, null);
 		}
 		else {
-			cb(null, files);
+			images = module.exports.formatImages(images);
+			imageCache.data = images;
+			imageCache.updated = + new Date();
+			cb(null, images);
 		}
 	});
 };
@@ -58,11 +77,18 @@ module.exports.formatImages = function(files, params, cb) {
 };
 
 module.exports.getFiles = function(params, cb) {
+	if ((+ new Date() - fileCache.updated) < 7200000) {
+		cb(null, fileCache.data);
+		return;
+	}
 	glob(constants.workingDir + "/u/" + "*.*", (err, files) => {
 		if (err) {
 			cb(err, null);
 		}
 		else {
+			files = module.exports.formatFiles(files);
+			fileCache.data = files;
+			fileCache.updated = + new Date();
 			cb(null, files);
 		}
 	});
