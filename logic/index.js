@@ -12,8 +12,9 @@
 /*
  * Configuration
  */
-let QQ = {usr: "noki", passwd: "totallynotapassword"}
-let workingDirectory = "E:/Projects/zmgr-testing/"; // "/var/www/noki.zorque.xyz/";
+//let QQ = {usr: "noki", passwd: ""};
+let QQ = require("../credentials.json");
+let constants = require("./util/constants.js");
 const port = process.env.PORT || 3000;
 
 /*
@@ -30,13 +31,13 @@ let session = require("express-session");
  */
 let app = module.exports = express();
 app.use(session({
-	secret: "amiee",
+	secret: "eeima",
 	saveUninitialized: false,
 	resave: false
 }));
 app.engine("pug", pug.__express);
 app.set("view engine", "pug");
-app.use("/zmgr/i", express.static(workingDirectory + "i"));
+app.use("/zmgr/i", express.static(constants.workingDir + "i"));
 app.use("/zmgr/assets", express.static("assets"));
 
 /*
@@ -45,49 +46,47 @@ app.use("/zmgr/assets", express.static("assets"));
 let file = require("./file.js");
 
 /*
+ * Middleware
+ */
+app.use(require("./middleware.js"));
+
+/*
  * Routes
  */
 
  // Main route
-app.get("/zmgr", (req, res) => {
-	if (!req.session.me) {
-		res.redirect("/zmgr/auth");
-	}
-	else {
-		async.parallel({
-			images: function(callback) {
-				file.getImages(null, (err, images) => {
-					if (err) {
-						callback(err, null);
-					}
-					else {
-						callback(null, file.formatImages(images));
-					}
-				});
-			},
-			files: function(callback) {
-				file.getFiles(null, (err, files) => {
-					if (err) {
-						callback(err, null);
-					}
-					else {
-						callback(null, file.formatFiles(files));
-					}
-				});
-			}
-		}, function(err, results) {
-			if (err) {
-				res.send(err);
-			}
-			else {
-				console.log(results)
-				res.locals.moment = require("moment");
-				res.locals.images = results.images;
-				res.locals.files = results.files;
-				res.render("index.pug");
-			}
-		});
-	}
+app.get(["/zmgr", "/zmgr/index"], (req, res) => {
+	res.render("index.pug");
+});
+
+// Image route
+app.get("/zmgr/images", (req, res) => {
+	file.getImages(null, (err, images) => {
+		if (err) {
+			res.send(err);
+		}
+		else {
+			images = file.formatImages(images);
+			res.locals.images = images;
+			res.locals.moment = require("moment");
+			res.render("images.pug");
+		}
+	});
+});
+
+// File route
+app.get("/zmgr/files", (req, res) => {
+	file.getImages(null, (err, files) => {
+		if (err) {
+			res.send(err);
+		}
+		else {
+			files = file.formatImages(files);
+			res.locals.files = files;
+			res.locals.moment = require("moment");
+			res.render("files.pug");
+		}
+	});
 });
 
 // Auth route
@@ -102,11 +101,11 @@ app.get("/zmgr/auth", (req, res) => {
 		}
 		else {
 			req.session.me = true;
-			res.redirect("/zmgr");
+			res.redirect("/zmgr/index");
 		}
 	}
 	else {
-		res.redirect("/zmgr");
+		res.redirect("/zmgr/index");
 	}
 });
 

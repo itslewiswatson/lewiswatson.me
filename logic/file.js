@@ -11,7 +11,7 @@
 
 let fs = require("fs");
 let glob = require("glob");
-let workingDirectory = "E:/Projects/zmgr-testing"; // "/var/www/noki.zorque.xyz/";
+let constants = require("./util/constants.js");
 
 Array.prototype.sortBy = function(p) {
 	return this.slice(0).sort(function(a, b) {
@@ -28,7 +28,7 @@ Array.prototype.sortBy = function(p) {
  * }
  */
 module.exports.getImages = function(params, cb) {
-	glob(workingDirectory + "/i/" + "*.{png,jpg,gif}", (err, files) => {
+	glob(constants.workingDir + "/i/" + "*.{png,jpg,gif}", (err, files) => {
 		if (err) {
 			cb(err, null);
 		}
@@ -58,7 +58,7 @@ module.exports.formatImages = function(files, params, cb) {
 };
 
 module.exports.getFiles = function(params, cb) {
-	glob(workingDirectory + "/u/" + "*.*", (err, files) => {
+	glob(constants.workingDir + "/u/" + "*.*", (err, files) => {
 		if (err) {
 			cb(err, null);
 		}
