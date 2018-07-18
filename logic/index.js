@@ -69,7 +69,7 @@ app.get("/zmgr/images", (req, res) => {
 			// add a constant for perpage number in util/constants.js
 			let page = req.query.page || 1;
 			let perPage = 20;
-			let startRange = (req.query.page - 1) * perPage;
+			let startRange = (page - 1) * perPage;
 			let endRange = startRange + perPage;
 
 			res.locals.images = images.slice(startRange, endRange);
@@ -89,7 +89,7 @@ app.get("/zmgr/files", (req, res) => {
 			// add a constant for perpage number in util/constants.js
 			let page = req.query.page || 1;
 			let perPage = 20;
-			let startRange = (req.query.page - 1) * perPage;
+			let startRange = (page - 1) * perPage;
 			let endRange = startRange + perPage;
 
 			res.locals.files = files.slice(startRange, endRange);
