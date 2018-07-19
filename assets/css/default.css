@@ -63,3 +63,7 @@ img {
 span:hover + img {
 	display: block;
 }
+
+a.disabled {
+    pointer-events: none;
+}
