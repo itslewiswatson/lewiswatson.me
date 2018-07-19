@@ -7,53 +7,15 @@
  * FILE: index.js
  */
 
-"use strict";
-
 /*
- * Configuration
+ * Libraries and config
  */
-//let QQ = {usr: "noki", passwd: ""};
 let QQ = require("../credentials.json");
-let constants = require("./util/constants.js");
-const port = process.env.PORT || 3000;
-
-/*
- * Libraries
- */
-let async = require("async");
-let pug = require("pug");
+let app = require("../index.js");
 let auth = require("basic-auth");
-let express = require("express");
-let session = require("express-session");
-
-/*
- * Express
- */
-let app = module.exports = express();
-app.use(session({
-	secret: "eeima",
-	saveUninitialized: false,
-	resave: false
-}));
-app.engine("pug", pug.__express);
-app.set("view engine", "pug");
-app.use("/zmgr/i", express.static(constants.workingDir + "i"));
-app.use("/zmgr/assets", express.static("assets"));
-
-/*
- * Modules
- */
 let file = require("./file.js");
-
-/*
- * Middleware
- */
-app.use(require("./middleware.js"));
-
-/*
- * Routes
- */
-
+let constants = require("./util/constants.js")
+ 
  // Main route
 app.get(["/zmgr", "/zmgr/index"], (req, res) => {
 	res.render("index.pug");
@@ -66,12 +28,17 @@ app.get("/zmgr/images", (req, res) => {
 			res.send(err);
 		}
 		else {
-			// add a constant for perpage number in util/constants.js
 			let page = req.query.page || 1;
-			let perPage = 20;
-			let startRange = (page - 1) * perPage;
-			let endRange = startRange + perPage;
+			let startRange = (page - 1) * constants.perPage;
+			let endRange = startRange + constants.perPage;
 
+			if (!images[startRange]) {
+				startRange = 0;
+				endRange = constants.perPage;
+			}
+
+			res.locals.perPage = constants.perPage;
+			res.locals.total = images.length;
 			res.locals.images = images.slice(startRange, endRange);
 			res.locals.moment = require("moment");
 			res.render("images.pug");
@@ -86,12 +53,17 @@ app.get("/zmgr/files", (req, res) => {
 			res.send(err);
 		}
 		else {
-			// add a constant for perpage number in util/constants.js
 			let page = req.query.page || 1;
-			let perPage = 20;
-			let startRange = (page - 1) * perPage;
-			let endRange = startRange + perPage;
+			let startRange = (page - 1) * constants.perPage;
+			let endRange = startRange + constants.perPage;
 
+			if (!files[startRange]) {
+				startRange = 0;
+				endRange = constants.perPage;
+			}
+
+			res.locals.perPage = constants.perPage;
+			res.locals.total = files.length;
 			res.locals.files = files.slice(startRange, endRange);
 			res.locals.moment = require("moment");
 			res.render("files.pug");
@@ -119,6 +91,3 @@ app.get("/zmgr/auth", (req, res) => {
 	}
 });
 
-app.listen(port, () => {
-	console.log("Listening for incoming connections on port " + port);
-});
