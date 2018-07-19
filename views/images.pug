@@ -21,17 +21,16 @@ html
 							- let fullTime = moment(dat.uploaded).format("dddd, MMMM Do YYYY, h:mm:ss a");
 							li #[span(title=fullTime class="pull-right since-label") #{timeSince}] #[span #[a(target="_blank" href=dat.url) #{dat.url}]] #[img(src=dat.url style="max-width: 50%")]
 			div(class="row")
-				nav(aria-label="...")
-					ul(class="pagination")
-
-						- for (let i = 1; i < 1 + totalPages; i++) {
-							- if (i === numPage)
-								li(class="page-item active")
-									a(href="?page=#{i}") #{i}
-							- else
-								li(class="page-item")
-									a(href="?page=#{i}") #{i}
-						- }
+				div(class="col-lg-6")
+					- let next = ((numPage + 1) <= totalPages ? true : false);
+					- if (next) {
+						span(title="Next" class="pull-right") #[a(href="?page=" + (numPage + 1)) >>]
+					- }
+					
+					- let prev = ((numPage - 1) > 0 ? true : false);
+					- if (prev) {
+						span(title="Previous" class="pull-left") #[a(href="?page=" + (numPage - 1)) <<]
+					- }
 			hr
 			div(class="footer text-center")
 				p © nokizorque 2018
