@@ -3,7 +3,7 @@
  */
 
 // Working directory
-let env = process.argv[2] || "dev";
+let env = process.env.NODE_ENV || "dev";
 let workingDir;
 
 switch (env) {
@@ -14,3 +14,10 @@ switch (env) {
 }
 
 module.exports.workingDir = workingDir;
+
+// Per page number (for pagination)
+let perPage = 20;
+
+module.exports.perPage = perPage;
+
+//
