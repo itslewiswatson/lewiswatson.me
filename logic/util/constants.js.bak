@@ -6,11 +6,11 @@
 let env = process.env.NODE_ENV || "dev";
 let workingDir;
 
-switch (env) {
-	case "dev":
-		workingDir = "E:/Projects/zmgr-testing/";
-	case "prod":
-		workingDir = "/var/www/noki.zorque.xyz/";
+if (env === "dev") {
+	workingDir = "e:\\Projects\\zmgr-testing\\";
+}
+else if (env === "prod") {
+	workingDir = "/var/www/noki.zorque.xyz/";
 }
 
 module.exports.workingDir = workingDir;

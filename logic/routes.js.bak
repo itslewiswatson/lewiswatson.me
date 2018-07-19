@@ -15,6 +15,7 @@ let app = require("../index.js");
 let auth = require("basic-auth");
 let file = require("./file.js");
 let constants = require("./util/constants.js")
+let util = require("./util/util.js");
  
  // Main route
 app.get(["/zmgr", "/zmgr/index"], (req, res) => {
@@ -28,7 +29,7 @@ app.get("/zmgr/images", (req, res) => {
 			res.send(err);
 		}
 		else {
-			let page = req.query.page || 1;
+			let page = parseInt(req.query.page) || 1;
 			let startRange = (page - 1) * constants.perPage;
 			let endRange = startRange + constants.perPage;
 
@@ -39,7 +40,7 @@ app.get("/zmgr/images", (req, res) => {
 
 			res.locals.numPage = page;
 			res.locals.perPage = constants.perPage;
-			res.locals.totalImg = images.length || 0;
+			res.locals.totalImg = util.tocomma(images.length) || 0;
 			res.locals.totalPages = Math.ceil(images.length / constants.perPage);
 			res.locals.images = images.slice(startRange, endRange);
 			res.locals.moment = require("moment");
