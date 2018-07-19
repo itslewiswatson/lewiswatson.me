@@ -14,12 +14,24 @@ html
 			hr
 			div(class="row")
 				div(class="col-lg-6")
-					h4 #[strong Images]
+					h4 #[strong Images] (#{totalImg})
 					ul(class="noki-list")
 						for dat, ind in images
 							- let timeSince = moment(dat.uploaded).fromNow();
 							- let fullTime = moment(dat.uploaded).format("dddd, MMMM Do YYYY, h:mm:ss a");
 							li #[span(title=fullTime class="pull-right since-label") #{timeSince}] #[span #[a(target="_blank" href=dat.url) #{dat.url}]] #[img(src=dat.url style="max-width: 50%")]
+			div(class="row")
+				nav(aria-label="...")
+					ul(class="pagination")
+
+						- for (let i = 1; i < 1 + totalPages; i++) {
+							- if (i === numPage)
+								li(class="page-item active")
+									a(href="?page=#{i}") #{i}
+							- else
+								li(class="page-item")
+									a(href="?page=#{i}") #{i}
+						- }
 			hr
 			div(class="footer text-center")
 				p © nokizorque 2018

@@ -37,8 +37,10 @@ app.get("/zmgr/images", (req, res) => {
 				endRange = constants.perPage;
 			}
 
+			res.locals.numPage = page;
 			res.locals.perPage = constants.perPage;
-			res.locals.total = images.length;
+			res.locals.totalImg = images.length || 0;
+			res.locals.totalPages = Math.ceil(images.length / constants.perPage);
 			res.locals.images = images.slice(startRange, endRange);
 			res.locals.moment = require("moment");
 			res.render("images.pug");
