@@ -12,6 +12,7 @@
 /*
  * Node environment
  */
+require("dotenv").config();
 if (!process.env.NODE_ENV) {
 	process.env.NODE_ENV = "dev";
 }
