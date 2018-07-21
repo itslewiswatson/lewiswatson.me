@@ -8,10 +8,7 @@ html
 		link(rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto")
 	body
 		div(class="container")
-			div(class="header text-center")
-				h1 zmgr
-				p Manage #[a(target="_blank" href="https://noki.zorque.xyz") #[u noki.zorque.xyz]] web services
-			hr
+			include header
 			div(class="row")
 				div(class="col-lg-6")
 					h3 #[strong Files]
@@ -20,6 +17,4 @@ html
 							- let timeSince = moment(dat.uploaded).fromNow();
 							- let fullTime = moment(dat.uploaded).format("dddd, MMMM Do YYYY, h:mm:ss a");
 							li #[span(title=fullTime class="pull-right since-label") #{timeSince}] #[a(target="_blank" href=dat.url) #{dat.url}]
-			hr
-			div(class="footer text-center")
-				p © nokizorque 2018
+			include footer
