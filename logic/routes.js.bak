@@ -39,7 +39,6 @@ app.get("/zmgr/images", (req, res) => {
 			}
 
 			res.locals.numPage = page;
-			res.locals.perPage = constants.perPage;
 			res.locals.totalImg = util.tocomma(images.length) || 0;
 			res.locals.totalPages = Math.ceil(images.length / constants.perPage);
 			res.locals.images = images.slice(startRange, endRange);
@@ -51,12 +50,12 @@ app.get("/zmgr/images", (req, res) => {
 
 // File route
 app.get("/zmgr/files", (req, res) => {
-	file.getImages(null, (err, files) => {
+	file.getFiles(null, (err, files) => {
 		if (err) {
 			res.send(err);
 		}
 		else {
-			let page = req.query.page || 1;
+			let page = parseInt(req.query.page) || 1;
 			let startRange = (page - 1) * constants.perPage;
 			let endRange = startRange + constants.perPage;
 
@@ -65,8 +64,10 @@ app.get("/zmgr/files", (req, res) => {
 				endRange = constants.perPage;
 			}
 
+			res.locals.numPage = page;
 			res.locals.perPage = constants.perPage;
-			res.locals.total = files.length;
+			res.locals.totalFiles = util.tocomma(files.length) || 0;
+			res.locals.totalPages = Math.ceil(files.length / constants.perPage);
 			res.locals.files = files.slice(startRange, endRange);
 			res.locals.moment = require("moment");
 			res.render("files.pug");

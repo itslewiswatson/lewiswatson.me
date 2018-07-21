@@ -10,11 +10,29 @@ html
 		div(class="container")
 			include header
 			div(class="row")
-				div(class="col-lg-6")
-					h3 #[strong Files]
+				div(class="col-lg-12")
+					h4 #[strong Files] (#{totalFiles})
 					ul(class="noki-list")
 						for dat, ind in files
 							- let timeSince = moment(dat.uploaded).fromNow();
 							- let fullTime = moment(dat.uploaded).format("dddd, MMMM Do YYYY, h:mm:ss a");
 							li #[span(title=fullTime class="pull-right since-label") #{timeSince}] #[a(target="_blank" href=dat.url) #{dat.url}]
+			div(class="row")
+				div(class="col-lg-12 text-center")
+					- let prev = ((numPage - 1) > 0 ? true : false);
+					- if (prev) {
+						span(title="Previous" class="pull-left") #[a(href="?page=" + (numPage - 1)) <<]
+					- }
+					- else {
+						span(class="pull-left") #[a(class="disabled") &nbsp;&nbsp;&nbsp;]
+					- }
+					span(title="Page Count") #{numPage}/#{totalPages}
+
+					- let next = ((numPage + 1) <= totalPages ? true : false);
+					- if (next) {
+						span(title="Next" class="pull-right") #[a(href="?page=" + (numPage + 1)) >>]
+					- }
+					- else {
+						span(class="pull-right") #[a(class="disabled") &nbsp;&nbsp;&nbsp;]
+					- }
 			include footer
