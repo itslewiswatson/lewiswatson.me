@@ -1,7 +1,7 @@
 doctype html
 html
 	head
-		title zmgr
+		title Images - zmgr
 		link(rel="stylesheet" type="text/css" href="/zmgr/assets/css/bootstrap.min.css")
 		link(rel="stylesheet" type="text/css" href="/zmgr/assets/css/default.css")
 		link(rel="stylesheet" type="text/css" href="https://noki.zorque.xyz/css/font-awesome.min.css")
@@ -16,7 +16,8 @@ html
 						for dat, ind in images
 							- let timeSince = moment(dat.uploaded).fromNow();
 							- let fullTime = moment(dat.uploaded).format("dddd, MMMM Do YYYY, h:mm:ss a");
-							li #[span(title=fullTime class="pull-right since-label") #{timeSince}] #[span #[a(target="_blank" href=dat.url) #{dat.url}]] #[img(src=dat.url style="max-width: 50%")]
+							- let abbrevURL = "..." + dat.url.substring(23);
+							li #[span(title=fullTime class="pull-right since-label") #{timeSince}] #[span #[a(target="_blank" href=dat.url) #{abbrevURL}]] #[img(src=dat.url style="max-width: 50%; max-height: 20%")]
 			div(class="row")
 				div(class="col-lg-12 text-center")
 					- let prev = ((numPage - 1) > 0 ? true : false);

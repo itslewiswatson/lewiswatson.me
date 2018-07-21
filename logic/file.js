@@ -12,6 +12,7 @@
 let fs = require("fs");
 let glob = require("glob");
 let constants = require("./util/constants.js");
+let util = require("./util/util.js");
 
 Array.prototype.sortBy = function(p) {
 	return this.slice(0).sort(function(a, b) {
@@ -100,12 +101,16 @@ module.exports.formatFiles = function(files, params, cb) {
 		let nameSplit = files[i].split("/");
 		let fileName = nameSplit[nameSplit.length - 1];
 
-		let timeCreated = fs.statSync(files[i]).ctimeMs;
+		let timeCreated = fs.statSync(files[i]).ctimeMs || 0;
+		let size = fs.statSync(files[i]).size || 0;
+		let fsize = util.tocomma(size);
 		let fullURL = "https://noki.zorque.xyz/u/" + fileName;
 
 		fileList.push({
 			uploaded: timeCreated,
-			url: fullURL
+			url: fullURL,
+			rsize: size,
+			fsize: fsize
 		});
 	}
 	fileList = fileList.sortBy("uploaded");

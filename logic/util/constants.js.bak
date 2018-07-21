@@ -16,7 +16,7 @@ else if (env === "prod") {
 module.exports.workingDir = workingDir;
 
 // Per page number (for pagination)
-let perPage = 20;
+let perPage = 25;
 
 module.exports.perPage = perPage;
 
