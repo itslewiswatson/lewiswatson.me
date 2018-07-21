@@ -86,11 +86,12 @@ app.get("/zmgr/auth", (req, res) => {
 		}
 		else {
 			req.session.me = true;
+			if (req.session.preAuthURL) {
+				res.redirect(req.session.preAuthURL);
+				return;
+			}
 			res.redirect("/zmgr/index");
 		}
-	}
-	else {
-		res.redirect("/zmgr/index");
 	}
 });
 
