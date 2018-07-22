@@ -1,12 +1,16 @@
 body {
-	font-family: 'Roboto', sans-serif;
-	background: url("../img/background.png");	
+	font-family: "Roboto", sans-serif;
+	background: url("../img/background.png");
 	color: white;
 }
 
 h1 {
 	font-size: 35px;
 	font-weight: bold;
+}
+
+.header {
+	margin-top: 1em;
 }
 
 a:link {
@@ -37,7 +41,11 @@ p {
 	list-style-type: none;
 }
 
-.noki-list li {
+.data-list {
+	list-style-type: none;
+}
+
+.data-list li {
 	overflow: hidden;
 	text-overflow: ellipsis;
  	white-space: nowrap;
@@ -66,6 +74,24 @@ span:hover + img {
 
 a.disabled {
     pointer-events: none;
+}
+
+.technologies ul {
+	list-style-type: none;
+	text-align: center;
+	padding: auto;
+	margin: 20px auto 20px auto;
+	line-height: 30px;
+}
+
+.technologies li {
+	display: inline-block;
+	background-color: white;
+	padding: 0em 1em;
+	margin: 2px;
+	border-radius: 5px;
+	font-size: 16px;
+	color: #5E5E5E;
 }
 
 .nbar ul {

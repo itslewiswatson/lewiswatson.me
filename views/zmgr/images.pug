@@ -2,8 +2,8 @@ doctype html
 html
 	head
 		title Images - zmgr
-		link(rel="stylesheet" type="text/css" href="/zmgr/assets/css/bootstrap.min.css")
-		link(rel="stylesheet" type="text/css" href="/zmgr/assets/css/default.css")
+		link(rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css")
+		link(rel="stylesheet" type="text/css" href="/assets/css/default.css")
 		link(rel="stylesheet" type="text/css" href="https://noki.zorque.xyz/css/font-awesome.min.css")
 		link(rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto")
 	body
@@ -12,7 +12,7 @@ html
 			div(class="row")
 				div(class="col-lg-12")
 					h4 #[strong Images] (#{totalImg})
-					ul(class="noki-list")
+					ul(class="data-list")
 						for dat, ind in images
 							- let timeSince = moment(dat.uploaded).fromNow();
 							- let fullTime = moment(dat.uploaded).format("dddd, MMMM Do YYYY, h:mm:ss a");
@@ -43,4 +43,4 @@ html
 						span(style="margin-left: 10px;") #[a(class="disabled") &nbsp;&nbsp;&nbsp;]
 						span(class="pull-right") #[a(class="disabled") &nbsp;&nbsp;&nbsp;]
 					- }
-			include footer
+			include ../footer

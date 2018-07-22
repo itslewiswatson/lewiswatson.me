@@ -43,7 +43,7 @@ app.use(session({
 app.engine("pug", pug.__express);
 app.set("view engine", "pug");
 app.use("/zmgr/i", express.static(constants.workingDir + "i"));
-app.use("/zmgr/assets", express.static("assets"));
+app.use("/assets", express.static("assets"));
 
 /*
  * Middleware
