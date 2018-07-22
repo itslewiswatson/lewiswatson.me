@@ -1,14 +1,63 @@
 doctype html
 html
 	head
-		title Index - zmgr
-		link(rel="stylesheet" type="text/css" href="/zmgr/assets/css/bootstrap.min.css")
-		link(rel="stylesheet" type="text/css" href="/zmgr/assets/css/default.css")
-		link(rel="stylesheet" type="text/css" href="https://noki.zorque.xyz/css/font-awesome.min.css")
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible" content="IE-edge")
+		meta(name="description" content)
+		meta(name="author" content)
+		title nokizorque
+		link(rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css")
+		link(rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css")
+		link(rel="stylesheet" type="text/css" href="/assets/css/default.css")
 		link(rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
 	body
 		div(class="container")
-			include header
-			div(class="col-lg-12 text-center")
-				p content soon
+			div(class="header")
+				h1(class="text-center") Lewis "#[span nokizorque]" Watson
+			hr
+			div(class="row")
+				div(class="col-lg-12 text-center")
+					a(href="mailto:noki@zorque.xyz" target="_top") noki@zorque.xyz
+				div(class="col-lg-12 technologies")
+					ul(class="list-inline")
+						li Lua
+						li PHP
+						li Node.js
+						li MySQL
+						li PostgreSQL
+						li Cassandra
+						li nginx
+			hr
+			div(class="row")
+				div(class="col-lg-6")
+					h3 #[strong Projects]
+					ul(class="noki-list")
+						li
+							h5 #[strong Education Levels]
+							p A tool helping students to monitor their development and achieve self-determined milestones throughout their educational journey.
+						li
+							h5 #[strong Union of Clarity and Diversity]	#[a(href="https://github.com/nokizorque/ucd" class="pull-right" target="_blank") #[i(class="fa fa-github" aria-hidden="true")]]
+							p An open-source Multi Theft Auto game mode and community designed to recreate the nostalgia of circa-2012 CIT.
+						li
+							h5 #[strong Virtual Stock Exchange] #[a(href="https://github.com/nokizorque/vsx" class="pull-right" target="_blank") #[i(class="fa fa-github" aria-hidden="true")]]
+							p An online stock exchange that mimics behaviour of real-life stock markets in an inconsequential environment.
+						li
+							h5 #[strong SMITE Team Finder] #[a(href="http://smiteteamfinder.com" class="pull-right" target="_blank") #[i(class="fa fa-globe" aria-hidden="true")]]
+							p A tool designed to connect the community and individual players of Hi-Rez Studio's action MOBA - SMITE.
+				div(class="col-lg-6")
+					h3 #[strong Contributions]
+					ul(class="noki-list")
+						li
+							h5 #[strong mtasa-resources] #[a(href="https://mtasa.com" class="pull-right" target="_blank") #[i(class="fa fa-globe" aria-hidden="true")]] #[a(href="https://github.com/multitheftauto/mtasa-resources" class="pull-right" target="_blank") #[i(class="fa fa-github" aria-hidden="true" style="margin-right:5px")]]
+							p The resource pack included with Multi Theft Auto, an open source multiplayer modification for Grand Theft Auto: San Andreas.
+						li
+							h5 #[strong GTW-RPG] #[a(href="https://404rq.com" class="pull-right" target="_blank") #[i(class="fa fa-globe" aria-hidden="true")]] #[a(href="https://github.com/404rq/GTW-RPG" class="pull-right" target="_blank") #[i(class="fa fa-github" aria-hidden="true" style="margin-right:5px")]]
+							p Advanced and lightweight RPG game mode for Multi Theft Auto created for the 'Grand Theft Walrus RPG' server.
+						li
+							h5 #[strong Aurora RPG] #[a(href="http://aurorarpg.net" class="pull-right" target="_blank") #[i(class="fa fa-globe" aria-hidden="true")]]
+							p A Multi Theft Auto community and relaxed role play server. The continuation of CSG, NGC and USG.
+						li
+							h5 #[strong United Social Gamers] #[a(href="https://github.com/nokizorque/usg" class="pull-right" target="_blank") #[i(class="fa fa-github" aria-hidden="true")]]
+							p A multi game mode Multi Theft Auto server and community centered on socialisation and fun. Merged with Aurora RPG.
 			include footer

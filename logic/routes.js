@@ -16,10 +16,15 @@ let auth = require("basic-auth");
 let file = require("./file.js");
 let constants = require("./util/constants.js")
 let util = require("./util/util.js");
+
+// Main route
+app.get("/", (req, res) => {
+	res.render("index.pug")
+});
  
- // Main route
+ // zmgr index route
 app.get(["/zmgr", "/zmgr/index"], (req, res) => {
-	res.render("index.pug");
+	res.render("zmgr/index.pug");
 });
 
 // Image route
@@ -43,7 +48,7 @@ app.get("/zmgr/images", (req, res) => {
 			res.locals.totalPages = Math.ceil(images.length / constants.perPage);
 			res.locals.images = images.slice(startRange, endRange);
 			res.locals.moment = require("moment");
-			res.render("images.pug");
+			res.render("zmgr/images.pug");
 		}
 	});
 });
@@ -70,7 +75,7 @@ app.get("/zmgr/files", (req, res) => {
 			res.locals.totalPages = Math.ceil(files.length / constants.perPage);
 			res.locals.files = files.slice(startRange, endRange);
 			res.locals.moment = require("moment");
-			res.render("files.pug");
+			res.render("zmgr/files.pug");
 		}
 	});
 });
@@ -96,3 +101,7 @@ app.get("/zmgr/auth", (req, res) => {
 	}
 });
 
+// Stats route
+app.get("/zmgr/stats", (req, res) => {
+	res.render("zmgr/stats.pug");
+});
