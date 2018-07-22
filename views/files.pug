@@ -28,19 +28,26 @@ html
 			div(class="row")
 				div(class="col-lg-12 text-center")
 					- let prev = ((numPage - 1) > 0 ? true : false);
+					- let next = ((numPage + 1) <= totalPages ? true : false);
+
 					- if (prev) {
-						span(title="Previous" class="pull-left") #[a(href="?page=" + (numPage - 1)) <<]
+						span(title="Previous" style="margin-right: 10px;") #[a(href="?page=" + (numPage - 1)) <]
+						span(title="First" class="pull-left") #[a(href="?page=1") <<]
 					- }
 					- else {
+						span(style="margin-left: 10px;") #[a(class="disabled") &nbsp;&nbsp;&nbsp;]
 						span(class="pull-left") #[a(class="disabled") &nbsp;&nbsp;&nbsp;]
 					- }
-					span(title="Page Count") #{numPage}/#{totalPages}
 
-					- let next = ((numPage + 1) <= totalPages ? true : false);
+
+					span(title="Page Count") #{numPage}/#{totalPages}
+					
 					- if (next) {
-						span(title="Next" class="pull-right") #[a(href="?page=" + (numPage + 1)) >>]
+						span(title="Next" style="margin-left: 10px;") #[a(href="?page=" + (numPage + 1)) >]
+						span(title="Last" class="pull-right") #[a(href="?page=" + totalPages) >>]
 					- }
 					- else {
+						span(style="margin-left: 10px;") #[a(class="disabled") &nbsp;&nbsp;&nbsp;]
 						span(class="pull-right") #[a(class="disabled") &nbsp;&nbsp;&nbsp;]
 					- }
 			include footer
