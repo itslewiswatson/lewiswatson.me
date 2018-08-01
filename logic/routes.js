@@ -10,7 +10,7 @@
 /*
  * Libraries and config
  */
-let QQ = require("../credentials.json");
+let QQ = require("../config.json");
 let app = require("../index.js");
 let auth = require("basic-auth");
 let file = require("./file.js");
