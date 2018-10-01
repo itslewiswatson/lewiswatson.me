@@ -43,11 +43,15 @@ app.get("/zmgr/images", (req, res) => {
 				endRange = constants.perPage;
 			}
 
-			res.locals.numPage = page;
-			res.locals.totalImg = util.tocomma(images.length) || 0;
-			res.locals.totalPages = Math.ceil(images.length / constants.perPage);
-			res.locals.images = images.slice(startRange, endRange);
-			res.locals.moment = require("moment");
+			res.locals = {
+				totalImageSize: util.formatSize(file.imageCache.totalSize),
+				numPage: page,
+				totalImages: util.tocomma(images.length) || 0,
+				totalPages: Math.ceil(images.length / constants.perPage),
+				images: images.slice(startRange, endRange),
+				moment: require("moment")
+			};
+
 			res.render("zmgr/images.pug");
 		}
 	});
@@ -69,12 +73,15 @@ app.get("/zmgr/files", (req, res) => {
 				endRange = constants.perPage;
 			}
 
-			res.locals.numPage = page;
-			res.locals.perPage = constants.perPage;
-			res.locals.totalFiles = util.tocomma(files.length) || 0;
-			res.locals.totalPages = Math.ceil(files.length / constants.perPage);
-			res.locals.files = files.slice(startRange, endRange);
-			res.locals.moment = require("moment");
+			res.locals = {
+				totalFileSize: util.formatSize(file.fileCache.totalSize),
+				numPage: page,
+				totalFiles: util.tocomma(files.length) || 0,
+				totalPages: Math.ceil(files.length / constants.perPage),
+				files: files.slice(startRange, endRange),
+				moment: require("moment")
+			};
+
 			res.render("zmgr/files.pug");
 		}
 	});

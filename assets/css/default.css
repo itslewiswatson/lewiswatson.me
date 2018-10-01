@@ -119,3 +119,7 @@ a.disabled {
 	padding: 0em 1em;
 	color: #5E5E5E;
 }
+
+.extra-info {
+	font-size: 12px;
+}
