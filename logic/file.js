@@ -59,17 +59,22 @@ module.exports.getImages = function(params, cb) {
 };
 
 // sortby date, limiting etc
-module.exports.formatImages = function(files, params, cb) {
+module.exports.formatImages = function(images, params, cb) {
 	let fileList = [];
-	for (let i = 0; i < files.length; i++) {
-		let nameSplit = files[i].split("/");
+	for (let i = 0; i < images.length; i++) {
+		let nameSplit = images[i].split("/");
 		let fileName = nameSplit[nameSplit.length - 1];
 
-		let timeCreated = fs.statSync(files[i]).ctimeMs;
+		let size = fs.statSync(images[i]).size || 0;
+		let fsize = util.tocomma(size);
+
+		let timeCreated = fs.statSync(images[i]).ctimeMs;
 		let fullURL = "https://noki.zorque.xyz/i/" + fileName;
 
 		fileList.push({
 			uploaded: timeCreated,
+			rsize: size,
+			fsize: fsize,
 			url: fullURL
 		});
 	}
