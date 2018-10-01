@@ -11,20 +11,13 @@ html
 			include header
 			div(class="row")
 				div(class="col-lg-12")
-					h4 #[strong Files] (#{totalFiles})
+					h4 #[span(title=totalFiles + " files, totalling " + totalFileSize) #[strong Files] (#{totalFiles})]
 					ul(class="data-list")
 						for dat, ind in files
 							- let timeSince = moment(dat.uploaded).fromNow();
 							- let fullTime = moment(dat.uploaded).format("dddd, MMMM Do YYYY, h:mm:ss a");
 							- let abbrevURL = "..." + dat.url.substring(23);
-							- let formatSize = dat.rsize / 1000000;
-							- let unit = "MB";
-							- if (formatSize < 1) {
-								- formatSize = dat.rsize / 1000;
-								- unit = "KB";
-							- }
-							- formatSize = Math.round((formatSize + 0.00001) * 100) / 100;
-							li #[span(title=fullTime class="pull-right since-label") #{timeSince}] #[a(target="_blank" href=dat.url) #{abbrevURL}] #[span(title=dat.fsize + " bytes") (#{formatSize}&nbsp;#{unit})]
+							li #[span(title=fullTime class="pull-right since-label") #{timeSince}] #[a(target="_blank" href=dat.url) #{abbrevURL}] #[span(class="extra-info" title=dat.fsize + " bytes") (#{dat.usize})]
 			div(class="row")
 				div(class="col-lg-12 text-center")
 					- let prev = ((numPage - 1) > 0 ? true : false);

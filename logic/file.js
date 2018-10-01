@@ -24,13 +24,24 @@ Array.prototype.sortBy = function(p) {
  * Caching
  */
 let fileCache = {
+	totalSize: 0,
 	updated: 0,
 	data: null
 };
 let imageCache = {
+	totalSize: 0,
 	updated: 0,
 	data: null
 }
+// Use this outside of this file
+module.exports.fileCache = fileCache;
+module.exports.imageCache = imageCache;
+
+/*
+ *
+ * IMAGES
+ * 
+ */
 
 /*
  * error err, object listing getImages(object params, function cb)
@@ -60,27 +71,38 @@ module.exports.getImages = function(params, cb) {
 
 // sortby date, limiting etc
 module.exports.formatImages = function(images, params, cb) {
-	let fileList = [];
+	imageCache.totalSize = 0; // Will get re-cached below
+	let imageList = [];
 	for (let i = 0; i < images.length; i++) {
 		let nameSplit = images[i].split("/");
 		let fileName = nameSplit[nameSplit.length - 1];
 
-		let size = fs.statSync(images[i]).size || 0;
-		let fsize = util.tocomma(size);
+		let size = fs.statSync(images[i]).size || 0; // Raw size
+		let fsize = util.tocomma(size); // Size (formatted)
+		let usize = util.formatSize(size); // Unit size (formatted)
+
+		imageCache.totalSize += size;
 
 		let timeCreated = fs.statSync(images[i]).ctimeMs;
 		let fullURL = "https://noki.zorque.xyz/i/" + fileName;
 
-		fileList.push({
+		imageList.push({
 			uploaded: timeCreated,
 			rsize: size,
 			fsize: fsize,
+			usize: usize,
 			url: fullURL
 		});
 	}
-	fileList = fileList.sortBy("uploaded");
-	return fileList;
+	imageList = imageList.sortBy("uploaded");
+	return imageList;
 };
+
+/*
+ *
+ * FILES
+ * 
+ */
 
 module.exports.getFiles = function(params, cb) {
 	if ((+ new Date() - fileCache.updated) < 7200000) {
@@ -101,21 +123,29 @@ module.exports.getFiles = function(params, cb) {
 };
 
 module.exports.formatFiles = function(files, params, cb) {
+	fileCache.totalSize = 0; // Will get re-cached below
 	let fileList = [];
 	for (let i = 0; i < files.length; i++) {
 		let nameSplit = files[i].split("/");
 		let fileName = nameSplit[nameSplit.length - 1];
 
 		let timeCreated = fs.statSync(files[i]).ctimeMs || 0;
-		let size = fs.statSync(files[i]).size || 0;
-		let fsize = util.tocomma(size);
+
+		// File size
+		let size = fs.statSync(files[i]).size || 0; // Raw size
+		let fsize = util.tocomma(size); // Size (formatted)
+		let usize = util.formatSize(size); // Unit size (formatted)
+
 		let fullURL = "https://noki.zorque.xyz/u/" + fileName;
+
+		fileCache.totalSize += size;
 
 		fileList.push({
 			uploaded: timeCreated,
 			url: fullURL,
 			rsize: size,
-			fsize: fsize
+			fsize: fsize,
+			usize: usize
 		});
 	}
 	fileList = fileList.sortBy("uploaded");
