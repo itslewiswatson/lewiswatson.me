@@ -6,19 +6,37 @@ html
 		meta(name="description" content)
 		meta(name="author" content)
 		title nokizorque
-		link(rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css")
-		link(rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css")
+		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css")
 		link(rel="stylesheet" type="text/css" href="/assets/css/default.css")
+		link(rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css")
 		link(rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto")
 		meta(name="viewport" content="width=device-width, initial-scale=1")
 	body
 		div(class="container")
-			div(class="header")
-				h1(class="text-center") Lewis "#[span nokizorque]" Watson
-			hr
 			div(class="row")
-				div(class="col-lg-12 text-center")
-					a(href="mailto:noki@zorque.xyz" target="_top") noki@zorque.xyz
+				div(class="header" style="margin-top: 10px;")
+					div(style="float: right;")
+						nav
+							ul(class="nav noki-list pull-right")
+								li(role="presentation")
+									a(href="mailto:noki@zorque.xyz" target="_top")
+										i(class="fa fa-3x fa-inbox" aria-hidden="true")
+								li(role="presentation")
+									a(href="https://github.com/nokizorque" target="_blank")
+										i(class="fa fa-3x fa-github" aria-hidden="true")
+								li(role="presentation")
+									a(href="https://twitter.com/nokizorque" target="_blank")
+										i(class="fa fa-3x fa-twitter" aria-hidden="true")
+								li(role="presentation")
+									a(href="https://www.linkedin.com/in/itslewiswatson" target="_blank")
+										i(class="fa fa-3x fa-linkedin" aria-hidden="true")
+					div(style="float: left;")
+						h1(class="text-center" style="margin-top: 10px;") Lewis "#[span nokizorque]" Watson
+			hr(class="nz")
+			div(class="row")
+				div(class="col-lg-12")
+					p(class="text-center") I am Lewis, a software engineer studying at the Queensland University of Technology, specializing in web development.
+					p(class="text-center") Bachelor of Business (Finance)/Bachelor of IT (Computer Science)
 				div(class="col-lg-12 technologies")
 					ul(class="list-inline")
 						li Lua
@@ -28,36 +46,45 @@ html
 						li PostgreSQL
 						li Cassandra
 						li nginx
-			hr
 			div(class="row")
+				div(class="col-lg-12")
+					h2
+						strong Portfolio
 				div(class="col-lg-6")
-					h3 #[strong Projects]
 					ul(class="noki-list")
 						li
-							h5 #[strong Education Levels]
-							p A tool helping students to monitor their development and achieve self-determined milestones throughout their educational journey.
+							h4 #[strong Axiom IT Solutions]
+							p An IT consultancy firm based on the Gold Coast and Brisbane, serving a vast array of clients, from individuals to medium-sized businesses.
 						li
-							h5 #[strong Union of Clarity and Diversity]	#[a(href="https://github.com/nokizorque/ucd" class="pull-right" target="_blank") #[i(class="fa fa-github" aria-hidden="true")]]
-							p An open-source Multi Theft Auto game mode and community designed to recreate the nostalgia of circa-2012 CIT.
+							h4 #[strong Education Levels]
+							p A tool helping students to monitor their development and achieve self-determined milestones throughout their educational journey from K - 12.
 						li
-							h5 #[strong Virtual Stock Exchange] #[a(href="https://github.com/nokizorque/vsx" class="pull-right" target="_blank") #[i(class="fa fa-github" aria-hidden="true")]]
+							h4 #[strong Union of Clarity and Diversity]	#[a(href="https://github.com/nokizorque/ucd" class="pull-right" target="_blank") #[i(class="fa fa-github" aria-hidden="true")]]
+							p An open-source RPG game mode and MTA community, designed to be welcoming to a diverse player base.
+						li
+							h4 #[strong Virtual Stock Exchange] #[a(href="https://github.com/nokizorque/vsx" class="pull-right" target="_blank") #[i(class="fa fa-github" aria-hidden="true")]]
 							p An online stock exchange that mimics behaviour of real-life stock markets in an inconsequential environment.
 						li
-							h5 #[strong SMITE Team Finder] #[a(href="http://smiteteamfinder.com" class="pull-right" target="_blank") #[i(class="fa fa-globe" aria-hidden="true")]]
+							h4 #[strong SMITE Team Finder] #[a(href="http://smiteteamfinder.com" class="pull-right" target="_blank") #[i(class="fa fa-globe" aria-hidden="true")]]
 							p A tool designed to connect the community and individual players of Hi-Rez Studio's action MOBA - SMITE.
+						li
+							h4 #[strong astratus]
+							p A peer-to-peer cloud network and storage platform.
 				div(class="col-lg-6")
-					h3 #[strong Contributions]
 					ul(class="noki-list")
 						li
-							h5 #[strong mtasa-resources] #[a(href="https://mtasa.com" class="pull-right" target="_blank") #[i(class="fa fa-globe" aria-hidden="true")]] #[a(href="https://github.com/multitheftauto/mtasa-resources" class="pull-right" target="_blank") #[i(class="fa fa-github" aria-hidden="true" style="margin-right:5px")]]
-							p The resource pack included with Multi Theft Auto, an open source multiplayer modification for Grand Theft Auto: San Andreas.
+							h4 #[strong mtasa-resources] #[a(href="https://mtasa.com" class="pull-right" target="_blank") #[i(class="fa fa-globe" aria-hidden="true")]] #[a(href="https://github.com/multitheftauto/mtasa-resources" class="pull-right" target="_blank") #[i(class="fa fa-github" aria-hidden="true" style="margin-right:5px")]]
+							p The resource pack included with Multi Theft Auto, an open source multiplayer modification for Grand Theft Auto: San Andreas. Used by 130,000 players every day.
 						li
-							h5 #[strong GTW-RPG] #[a(href="https://404rq.com" class="pull-right" target="_blank") #[i(class="fa fa-globe" aria-hidden="true")]] #[a(href="https://github.com/404rq/GTW-RPG" class="pull-right" target="_blank") #[i(class="fa fa-github" aria-hidden="true" style="margin-right:5px")]]
+							h4 #[strong GTW-RPG] #[a(href="https://404rq.com" class="pull-right" target="_blank") #[i(class="fa fa-globe" aria-hidden="true")]] #[a(href="https://github.com/404rq/GTW-RPG" class="pull-right" target="_blank") #[i(class="fa fa-github" aria-hidden="true" style="margin-right:5px")]]
 							p Advanced and lightweight RPG game mode for Multi Theft Auto created for the 'Grand Theft Walrus RPG' server.
 						li
-							h5 #[strong Aurora RPG] #[a(href="http://aurorarpg.net" class="pull-right" target="_blank") #[i(class="fa fa-globe" aria-hidden="true")]]
+							h4 #[strong Aurora RPG] #[a(href="http://aurorarpg.net" class="pull-right" target="_blank") #[i(class="fa fa-globe" aria-hidden="true")]]
 							p A Multi Theft Auto community and relaxed role play server. The continuation of CSG, NGC and USG.
 						li
-							h5 #[strong United Social Gamers] #[a(href="https://github.com/nokizorque/usg" class="pull-right" target="_blank") #[i(class="fa fa-github" aria-hidden="true")]]
-							p A multi game mode Multi Theft Auto server and community centered on socialisation and fun. Merged with Aurora RPG.
+							h4 #[strong United Social Gamers] #[a(href="https://github.com/nokizorque/usg" class="pull-right" target="_blank") #[i(class="fa fa-github" aria-hidden="true")]]
+							p A robust multi game mode MTA server and community centered on socialisation and fun. Merged with Aurora RPG.
+						li
+							h4 #[strong Twenti]
+							p A music sharing platform designed to connect artists and producers with one another, and encourage collaboration.
 			include footer
