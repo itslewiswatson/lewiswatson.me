@@ -45,6 +45,10 @@ p {
 	font-size: 16px;
 }
 
+.technologies li a {
+	color: #5E5E5E;
+}
+
 .noki-list {
 	list-style-type: none;
 	overflow: hidden;
