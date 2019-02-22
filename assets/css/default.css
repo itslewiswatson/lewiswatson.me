@@ -14,6 +14,21 @@ h2 {
 	margin-bottom: 10px;
 }
 
+small {
+	color: white !important;
+}
+
+.role {
+	font-size: 90%;
+}
+
+.role-time {
+	padding-right: 0.75em;
+	vertical-align: middle;
+	height: 100%;
+	display: inline-block;
+}
+
 hr.nz {
 	margin: 5px, auto, 5px;
 }
@@ -36,6 +51,14 @@ p {
 	line-height: 30px;
 }
 
+.technologies-small ul {
+	list-style-type: none;
+	text-align: center;
+	padding: auto;
+	margin: 10px auto 10px auto;
+	line-height: 20px;
+}
+
 .technologies li {
 	background-color: white;
 	margin: 2px;
@@ -45,7 +68,16 @@ p {
 	font-size: 16px;
 }
 
-.technologies li a {
+.technologies-small li {
+	background-color: white;
+	margin: 2px;
+	padding: 0em 1em;
+	border-radius: 5px;
+	color: #5E5E5E;
+	font-size: 14px;
+}
+
+.technologies li a, .technologies-small li a {
 	color: #5E5E5E;
 }
 
