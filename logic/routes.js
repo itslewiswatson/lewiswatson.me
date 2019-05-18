@@ -41,7 +41,7 @@ app.get("/zmgr/images", (req, res) => {
 			let endRange = pag.endRange;
 
 			res.locals = {
-				totalImageSize: util.formatSize(file.imageCache.totalSize),
+				totalImageSize: util.formatSize(file.cache["images"].totalSize),
 				numPage: page,
 				totalImages: util.tocomma(images.length) || 0,
 				totalPages: Math.ceil(images.length / constants.perPage),
@@ -67,7 +67,7 @@ app.get("/zmgr/files", (req, res) => {
 			let endRange = pag.endRange;
 
 			res.locals = {
-				totalFileSize: util.formatSize(file.fileCache.totalSize),
+				totalFileSize: util.formatSize(file.cache["files"].totalSize),
 				numPage: page,
 				totalFiles: util.tocomma(files.length) || 0,
 				totalPages: Math.ceil(files.length / constants.perPage),
