@@ -1,6 +1,11 @@
 body {
+<<<<<<< HEAD
 	font-family: "Roboto", sans-serif;
 	background: url("../img/background.png");
+=======
+	font-family: 'Roboto', sans-serif;
+	background: url("../img/background.png");	
+>>>>>>> 1e6d12bf3708e8f4dbc40ba65d5575c6d61a5674
 	color: white;
 }
 
@@ -9,6 +14,7 @@ h1 {
 	font-weight: bold;
 }
 
+<<<<<<< HEAD
 .header {
 	margin-top: 1em;
 }
@@ -30,6 +36,35 @@ a:hover {
 
 a:active {
 	color: white;
+=======
+h2 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+small {
+	color: white !important;
+}
+
+.role {
+	font-size: 90%;
+}
+
+.role-time {
+	padding-right: 0.75em;
+	vertical-align: middle;
+	height: 100%;
+	display: inline-block;
+}
+
+hr.nz {
+	margin: 5px, auto, 5px;
+}
+
+a:link, a:hover, a:active, a:link, a:visited {
+	color: white;
+	background-color: none;
+>>>>>>> 1e6d12bf3708e8f4dbc40ba65d5575c6d61a5674
 	text-decoration: none;
 }
 
@@ -37,6 +72,7 @@ p {
 	font-size: medium;
 }
 
+<<<<<<< HEAD
 .noki-list {
 	list-style-type: none;
 }
@@ -76,6 +112,8 @@ a.disabled {
     pointer-events: none;
 }
 
+=======
+>>>>>>> 1e6d12bf3708e8f4dbc40ba65d5575c6d61a5674
 .technologies ul {
 	list-style-type: none;
 	text-align: center;
@@ -84,6 +122,7 @@ a.disabled {
 	line-height: 30px;
 }
 
+<<<<<<< HEAD
 .technologies li {
 	display: inline-block;
 	background-color: white;
@@ -95,10 +134,14 @@ a.disabled {
 }
 
 .nbar ul {
+=======
+.technologies-small ul {
+>>>>>>> 1e6d12bf3708e8f4dbc40ba65d5575c6d61a5674
 	list-style-type: none;
 	text-align: center;
 	padding: auto;
 	margin: 10px auto 10px auto;
+<<<<<<< HEAD
 	line-height: 30px;
 }
 
@@ -122,4 +165,63 @@ a.disabled {
 
 .extra-info {
 	font-size: 12px;
+=======
+	line-height: 20px;
+	display: inline;
+}
+
+.technologies li {
+	background-color: white;
+	margin: 2px;
+	padding: 0em 1em;
+	border-radius: 5px;
+	color: #5E5E5E;
+	font-size: 16px;
+}
+
+.technologies-small li {
+	background-color: white;
+	margin: 2px;
+	padding: 0em 1em;
+	border-radius: 5px;
+	color: #5E5E5E;
+	font-size: 14px;
+}
+
+.technologies li a, .technologies-small li a {
+	color: #5E5E5E;
+}
+
+.noki-list {
+	list-style-type: none;
+	overflow: hidden;
+}
+
+.nav {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	list-style: none;
+  }
+
+nav>li>a {
+	color: white;
+	background-color: none;
+	transition: color 300ms, background-color 300ms;
+}
+
+.nav>li>a:visited, .nav>li>a:active {
+	background-color: none;
+}
+
+.nav>li>a:hover {
+	color: #5E5E5E;
+	background-color: white;
+	transition: color 300ms, background-color 300ms
+}
+
+.list-inline {
+	margin-top: 5px !important;
+>>>>>>> 1e6d12bf3708e8f4dbc40ba65d5575c6d61a5674
 }

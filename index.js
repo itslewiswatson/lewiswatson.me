@@ -42,7 +42,12 @@ app.use(session({
 }));
 app.engine("pug", pug.__express);
 app.set("view engine", "pug");
+<<<<<<< HEAD
 app.use("/zmgr/i", express.static(constants.workingDir + "i"));
+=======
+app.use("/i", express.static(constants.workingDir + "/i")); // serve images
+app.use("/u", express.static(constants.workingDir + "/u")); // service files
+>>>>>>> 1e6d12bf3708e8f4dbc40ba65d5575c6d61a5674
 app.use("/assets", express.static("assets"));
 
 /*
