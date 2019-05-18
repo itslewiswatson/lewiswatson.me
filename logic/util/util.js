@@ -15,4 +15,3 @@ module.exports.formatSize = (rawSize) => {
 		) 
 	+ " " + unit;
 }
-

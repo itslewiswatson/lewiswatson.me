@@ -1,11 +1,6 @@
 body {
-<<<<<<< HEAD
-	font-family: "Roboto", sans-serif;
-	background: url("../img/background.png");
-=======
 	font-family: 'Roboto', sans-serif;
 	background: url("../img/background.png");	
->>>>>>> 1e6d12bf3708e8f4dbc40ba65d5575c6d61a5674
 	color: white;
 }
 
@@ -14,29 +9,6 @@ h1 {
 	font-weight: bold;
 }
 
-<<<<<<< HEAD
-.header {
-	margin-top: 1em;
-}
-
-a:link {
-	color: white;
-	text-decoration: none;
-}
-
-a:visited {
-	color: white;
-	text-decoration: none;
-}
-
-a:hover {
-	color: white;
-	text-decoration: underline;
-}
-
-a:active {
-	color: white;
-=======
 h2 {
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -64,7 +36,6 @@ hr.nz {
 a:link, a:hover, a:active, a:link, a:visited {
 	color: white;
 	background-color: none;
->>>>>>> 1e6d12bf3708e8f4dbc40ba65d5575c6d61a5674
 	text-decoration: none;
 }
 
@@ -72,48 +43,6 @@ p {
 	font-size: medium;
 }
 
-<<<<<<< HEAD
-.noki-list {
-	list-style-type: none;
-}
-
-.data-list {
-	list-style-type: none;
-}
-
-.data-list li {
-	overflow: hidden;
-	text-overflow: ellipsis;
- 	white-space: nowrap;
-}
-
-.since-label {
-	margin-left: 10px;
-}
-
-hr {
-	display: block;
-	height: 1px;
-	border: 0;
-	border-top: 1px solid #ccc;
-	margin: 1em 0;
-	padding: 0; 
-}
-
-img { 
-	display: none;
-}
-
-span:hover + img {
-	display: block;
-}
-
-a.disabled {
-    pointer-events: none;
-}
-
-=======
->>>>>>> 1e6d12bf3708e8f4dbc40ba65d5575c6d61a5674
 .technologies ul {
 	list-style-type: none;
 	text-align: center;
@@ -122,50 +51,11 @@ a.disabled {
 	line-height: 30px;
 }
 
-<<<<<<< HEAD
-.technologies li {
-	display: inline-block;
-	background-color: white;
-	padding: 0em 1em;
-	margin: 2px;
-	border-radius: 5px;
-	font-size: 16px;
-	color: #5E5E5E;
-}
-
-.nbar ul {
-=======
 .technologies-small ul {
->>>>>>> 1e6d12bf3708e8f4dbc40ba65d5575c6d61a5674
 	list-style-type: none;
 	text-align: center;
 	padding: auto;
 	margin: 10px auto 10px auto;
-<<<<<<< HEAD
-	line-height: 30px;
-}
-
-.nbar li {
-	display: inline-block;
-	background-color: white;
-	padding: 0px;
-	margin: 2px;
-	border-radius: 5px;
-	font-size: 16px;
-}
-
-.nbar li a {
-	margin: 0px;
-	display: block;
-	width: 100%;
-	height: 100%;
-	padding: 0em 1em;
-	color: #5E5E5E;
-}
-
-.extra-info {
-	font-size: 12px;
-=======
 	line-height: 20px;
 	display: inline;
 }
@@ -223,5 +113,4 @@ nav>li>a {
 
 .list-inline {
 	margin-top: 5px !important;
->>>>>>> 1e6d12bf3708e8f4dbc40ba65d5575c6d61a5674
 }
