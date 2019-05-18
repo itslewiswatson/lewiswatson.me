@@ -16,6 +16,7 @@ let auth = require("basic-auth");
 let file = require("./file.js");
 let constants = require("./util/constants.js")
 let util = require("./util/util.js");
+let pagination = require("../lib/pagination.js");
 
 // Main route
 app.get("/", (req, res) => {
@@ -34,14 +35,10 @@ app.get("/zmgr/images", (req, res) => {
 			res.send(err);
 		}
 		else {
-			let page = parseInt(req.query.page) || 1;
-			let startRange = (page - 1) * constants.perPage;
-			let endRange = startRange + constants.perPage;
-
-			if (!images[startRange]) {
-				startRange = 0;
-				endRange = constants.perPage;
-			}
+			let page = req.query.page || 1;
+			let pag = pagination.calc(page, images);
+			let startRange = pag.startRange;
+			let endRange = pag.endRange;
 
 			res.locals = {
 				totalImageSize: util.formatSize(file.imageCache.totalSize),
@@ -64,14 +61,10 @@ app.get("/zmgr/files", (req, res) => {
 			res.send(err);
 		}
 		else {
-			let page = parseInt(req.query.page) || 1;
-			let startRange = (page - 1) * constants.perPage;
-			let endRange = startRange + constants.perPage;
-
-			if (!files[startRange]) {
-				startRange = 0;
-				endRange = constants.perPage;
-			}
+			let page = req.query.page || 1;
+			let pag = pagination.calc(page, files);
+			let startRange = pag.startRange;
+			let endRange = pag.endRange;
 
 			res.locals = {
 				totalFileSize: util.formatSize(file.fileCache.totalSize),
