@@ -36,14 +36,14 @@ let session = require("express-session");
  */
 let app = module.exports = express();
 app.use(session({
-	secret: "eeima",
+	secret: process.env.SECRET,
 	saveUninitialized: false,
 	resave: false
 }));
 app.engine("pug", pug.__express);
 app.set("view engine", "pug");
-app.use("/i", express.static(constants.workingDir + "/i")); // serve images
-app.use("/u", express.static(constants.workingDir + "/u")); // service files
+app.use("/i", express.static(process.env.WORKING_DIR + "/i")); // serve images
+app.use("/u", express.static(process.env.WORKING_DIR + "/u")); // service files
 app.use("/assets", express.static("assets"));
 
 /*

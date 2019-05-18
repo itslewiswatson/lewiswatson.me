@@ -10,7 +10,6 @@
 /*
  * Libraries and config
  */
-let QQ = require("../config.json");
 let app = require("../index.js");
 let auth = require("basic-auth");
 let file = require("./file.js");
@@ -30,7 +29,7 @@ app.get(["/zmgr", "/zmgr/index"], (req, res) => {
 
 // Image route
 app.get("/zmgr/images", (req, res) => {
-	file.getImages(null, (err, images) => {
+	file.findAll({type: "images"}, (err, images) => {
 		if (err) {
 			res.send(err);
 		}
@@ -56,7 +55,7 @@ app.get("/zmgr/images", (req, res) => {
 
 // File route
 app.get("/zmgr/files", (req, res) => {
-	file.getFiles(null, (err, files) => {
+	file.findAll({type: "files"}, (err, files) => {
 		if (err) {
 			res.send(err);
 		}
@@ -85,7 +84,12 @@ app.get("/zmgr/auth", (req, res) => {
 	if (!req.session.me) {
 		let credentials = auth(req);
 
-		if (!credentials || credentials.name !== QQ.auth.usr || credentials.pass !== QQ.auth.passwd) {
+		let user = process.env.CONFIG_USER;
+		let password = process.env.CONFIG_PASSWORD;
+
+		let authorized = (!credentials || credentials.name !== user || credentials.pass !== password);
+
+		if (authorized) {
 			res.statusCode = 401;
 			res.setHeader("WWW-Authenticate", "Basic realm='example'");
 			res.end("No access for you!");

@@ -9,16 +9,34 @@
 
 "use strict";
 
+/**
+ * Libraries
+ */
 let fs = require("fs");
 let glob = require("glob");
-let constants = require("./util/constants.js");
 let util = require("./util/util.js");
 
+/**
+ * File configs
+ */
 let baseURL = "https://noki.zorque.xyz";
 let types = ["images", "files"];
-let subDirs = {"images": "i", "files": "u"};
+let subDirs = {images: "i", files: "u"};
+let fileAlgorithm = {images: "*.{png,jpg,gif}", files: "*.*"};
 
-module.exports.__format = function(type, dataList) {
+/**
+ * Util function
+ */
+Array.prototype.sortBy = function(p) {
+	return this.slice(0).sort(function(a, b) {
+		return (a[p] < b[p]) ? 1 : (a[p] > b[p]) ? -1 : 0;
+	});
+};
+
+/**
+ * Formatting
+ */
+module.exports.formatList = function(type, dataList) {
 	let formattedList = [];
 	if (!types.includes(type)) {
 		return null;
@@ -49,15 +67,37 @@ module.exports.__format = function(type, dataList) {
 
 	formattedList = formattedList.sortBy("uploaded");
 	return formattedList;
-}
+};
 
-Array.prototype.sortBy = function(p) {
-	return this.slice(0).sort(function(a, b) {
-		return (a[p] < b[p]) ? 1 : (a[p] > b[p]) ? -1 : 0;
+/**
+ * Gather files
+ */
+module.exports.findAll = function(params, cb) {
+	if (!params || !types.includes(params.type)) {
+		cb(new Error("Incorrect type specified"), null);
+		return;
+	}
+	if ((+ new Date() - cache[params.type].updated) < 7200000) {
+		cb(null, cache[params.type].data);
+		return;
+	}
+
+	let scanDir = process.env.WORKING_DIR + "/" + subDirs[params.type] + "/" + fileAlgorithm[params.type];
+	
+	glob(scanDir, (err, data) => {
+		if (err) {
+			cb(err, null);
+		}
+		else {
+			data = module.exports.formatList(params.type, data);
+			cache[params.type].data = data;
+			cache[params.type].updated = + new Date();
+			cb(null, data);
+		}
 	});
 };
 
-/*
+/**
  * Caching
  */
 let cache = {
@@ -72,41 +112,4 @@ let cache = {
 		data: null
 	}
 };
-// Use this outside of this file
 module.exports.cache = cache;
-
-module.exports.getImages = function(params, cb) {
-	if ((+ new Date() - cache["images"].updated) < 7200000) {
-		cb(null, cache["images"].data);
-		return;
-	}
-	glob(constants.workingDir + "/i/" + "*.{png,jpg,gif}", (err, images) => {
-		if (err) {
-			cb(err, null);
-		}
-		else {
-			images = module.exports.__format("images", images);
-			cache["images"].data = images;
-			cache["images"].updated = + new Date();
-			cb(null, images);
-		}
-	});
-};
-
-module.exports.getFiles = function(params, cb) {
-	if ((+ new Date() - cache["files"].updated) < 7200000) {
-		cb(null, cache["files"].data);
-		return;
-	}
-	glob(constants.workingDir + "/u/" + "*.*", (err, files) => {
-		if (err) {
-			cb(err, null);
-		}
-		else {
-			files = module.exports.__format("files", files);
-			cache["files"].data = files;
-			cache["files"].updated = + new Date();
-			cb(null, files);
-		}
-	});
-};
