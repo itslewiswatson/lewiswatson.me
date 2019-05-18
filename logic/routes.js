@@ -95,11 +95,7 @@ app.get("/zmgr/auth", (req, res) => {
 		if (!credentials || credentials.name !== QQ.auth.usr || credentials.pass !== QQ.auth.passwd) {
 			res.statusCode = 401;
 			res.setHeader("WWW-Authenticate", "Basic realm='example'");
-<<<<<<< HEAD
-			res.end("sorry sweetie x");
-=======
 			res.end("No access for you!");
->>>>>>> 1e6d12bf3708e8f4dbc40ba65d5575c6d61a5674
 		}
 		else {
 			req.session.me = true;
