@@ -29,7 +29,8 @@ app.get(["/zmgr", "/zmgr/index"], (req, res) => {
 
 // Image route
 app.get("/zmgr/images", (req, res) => {
-	file.findAll({type: "images"}, (err, images) => {
+	ignoreCache = (req.query.cache === "false");
+	file.findAll({type: "images", ignoreCache: ignoreCache}, (err, images) => {
 		if (err) {
 			res.send(err);
 		}
@@ -55,7 +56,8 @@ app.get("/zmgr/images", (req, res) => {
 
 // File route
 app.get("/zmgr/files", (req, res) => {
-	file.findAll({type: "files"}, (err, files) => {
+	ignoreCache = (req.query.cache === "false");
+	file.findAll({type: "files", ignoreCache: ignoreCache}, (err, files) => {
 		if (err) {
 			res.send(err);
 		}

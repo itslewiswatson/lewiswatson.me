@@ -77,8 +77,9 @@ module.exports.findAll = function(params, cb) {
 		cb(new Error("Incorrect type specified"), null);
 		return;
 	}
-	if ((+ new Date() - cache[params.type].updated) < 7200000) {
+	if (!params.ignoreCache && (+ new Date() - cache[params.type].updated) < 7200000) {
 		cb(null, cache[params.type].data);
+		console.log("Using cache");
 		return;
 	}
 
