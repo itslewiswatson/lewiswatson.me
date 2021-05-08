@@ -1,116 +1,126 @@
 body {
-	font-family: 'Roboto', sans-serif;
-	background: url("../img/background.png");	
-	color: white;
+  font-family: "Roboto", sans-serif;
+  background: url("../img/background.png");
+  color: white;
 }
 
 h1 {
-	font-size: 35px;
-	font-weight: bold;
+  font-size: 35px;
+  font-weight: bold;
 }
 
 h2 {
-	margin-top: 10px;
-	margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 small {
-	color: white !important;
+  color: white !important;
 }
 
 .role {
-	font-size: 90%;
+  font-size: 90%;
 }
 
 .role-time {
-	padding-right: 0.75em;
-	vertical-align: middle;
-	height: 100%;
-	display: inline-block;
+  padding-right: 0.75em;
+  vertical-align: middle;
+  height: 100%;
+  display: inline-block;
 }
 
 hr.nz {
-	margin: 5px, auto, 5px;
+  margin: 5px, auto, 5px;
 }
 
-a:link, a:hover, a:active, a:link, a:visited {
-	color: white;
-	background-color: none;
-	text-decoration: none;
+a:link,
+a:hover,
+a:active,
+a:link,
+a:visited {
+  color: white;
+  background-color: none;
+  text-decoration: none;
 }
 
 p {
-	font-size: medium;
+  font-size: medium;
 }
 
 .technologies ul {
-	list-style-type: none;
-	text-align: center;
-	padding: auto;
-	margin: 20px auto 20px auto;
-	line-height: 30px;
+  list-style-type: none;
+  text-align: center;
+  padding: auto;
+  margin: 20px auto 20px auto;
+  line-height: 30px;
 }
 
 .technologies-small ul {
-	list-style-type: none;
-	text-align: center;
-	padding: auto;
-	margin: 10px auto 10px auto;
-	line-height: 20px;
-	display: inline;
+  list-style-type: none;
+  text-align: center;
+  padding: auto;
+  margin: 10px auto 10px auto;
+  line-height: 20px;
+  display: inline;
 }
 
 .technologies li {
-	background-color: white;
-	margin: 2px;
-	padding: 0em 1em;
-	border-radius: 5px;
-	color: #5E5E5E;
-	font-size: 16px;
+  background-color: white;
+  margin: 2px;
+  padding: 0em 1em;
+  border-radius: 5px;
+  color: #5e5e5e;
+  font-size: 16px;
 }
 
 .technologies-small li {
-	background-color: white;
-	margin: 2px;
-	padding: 0em 1em;
-	border-radius: 5px;
-	color: #5E5E5E;
-	font-size: 14px;
+  background-color: white;
+  margin: 2px;
+  padding: 0em 1em;
+  border-radius: 5px;
+  color: #5e5e5e;
+  font-size: 14px;
 }
 
-.technologies li a, .technologies-small li a {
-	color: #5E5E5E;
+.technologies li a,
+.technologies-small li a {
+  color: #5e5e5e;
 }
 
 .noki-list {
-	list-style-type: none;
-	overflow: hidden;
+  list-style-type: none;
+  overflow: hidden;
 }
 
 .nav {
-	display: -ms-flexbox;
-	display: flex;
-	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
-	list-style: none;
-  }
-
-nav>li>a {
-	color: white;
-	background-color: none;
-	transition: color 300ms, background-color 300ms;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  list-style: none;
 }
 
-.nav>li>a:visited, .nav>li>a:active {
-	background-color: none;
+.nav > li > a {
+	border-radius: 5px;
 }
 
-.nav>li>a:hover {
-	color: #5E5E5E;
-	background-color: white;
-	transition: color 300ms, background-color 300ms
+nav > li > a {
+  color: white;
+  background-color: none;
+  transition: color 300ms, background-color 300ms;
+}
+
+.nav > li > a:visited,
+.nav > li > a:active {
+  background-color: none;
+}
+
+.nav > li > a:hover {
+  color: #5e5e5e;
+  background-color: white;
+  transition: color 300ms, background-color 300ms;
 }
 
 .list-inline {
-	margin-top: 5px !important;
+  margin-top: 5px !important;
 }
