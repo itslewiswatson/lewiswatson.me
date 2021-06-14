@@ -77,6 +77,12 @@ body {
     margin-top: 10px;
 }
 
+.iconBar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #44404a;
