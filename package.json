@@ -17,7 +17,7 @@
     "express-session": "^1.16.2",
     "fs": "0.0.1-security",
     "glob": "^7.1.4",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "nodemon": "^2.0.7",
     "pug": "^3.0.2",
     "serve-favicon": "^2.5.0",
