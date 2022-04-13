@@ -10,7 +10,7 @@
   "author": "Lewis Watson",
   "license": "UNLICENSED",
   "dependencies": {
-    "async": "^2.6.3",
+    "async": "^3.2.2",
     "basic-auth": "^2.0.1",
     "dotenv": "^6.2.0",
     "express": "^4.17.1",
